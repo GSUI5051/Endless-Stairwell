@@ -1,0 +1,1276 @@
+html {
+  height: 100%;
+  width: 100%;
+  cursor: url('img/tinyMouse.png'), auto;
+  user-select: none;
+}
+
+body {
+  background-color: #018281;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+h2 {
+  text-align: center;
+  margin: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+button {
+  font-size: 16.5px;
+  height: 26px;
+}
+
+button:hover {
+  cursor: url('img/tinyMouse.png'), default;
+}
+
+#windowsIcons {
+  position: absolute;
+  top: 3px;
+  left: 12px;
+  pointer-events: none;
+}
+
+#startButton {
+  position: absolute;
+  bottom: 9px;
+  left: 3px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/*Bottom bar stuff*/
+#bottomBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+}
+
+#timeBox {
+  position: absolute;
+  bottom: 10px;
+  right: 6px;
+  width: 60px;
+  height: 18px;
+  border: 1px solid #808080;
+}
+
+#theFuckingTime {
+  line-height: 0;
+  font-size: 11px;
+  margin-top: 10px;
+  margin-left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/*the game box*/
+#gameWindow {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1280px;
+  height: 720px;
+  z-index: 2;
+}
+
+#game {
+  background-color: #808080;
+  margin: 0;
+  width: 100%;
+  height: 700px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr 0.6fr 1fr;
+  grid-template-rows: 2fr 1fr;
+}
+
+.container {
+  border: 3px outset #b0b0b0;
+  position: relative;
+}
+
+/*Health, energy and stats stuff*/
+#healthBar {
+  margin-left: 10%;
+  width: 80%;
+  height: 18px;
+  border: 3px outset #b0b0b0;
+  background-color: #606060;
+  position: relative;
+}
+
+#healthBarInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color: #ff0000;
+}
+
+#healthBarText {
+  line-height: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+#energyBar {
+  margin-left: 10%;
+  width: 80%;
+  height: 18px;
+  border: 3px outset #b0b0b0;
+  background-color: #606060;
+  position: relative;
+}
+
+#energyBarInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color: #00ffff;
+}
+
+#energyBarText {
+  line-height: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+#buff1 {
+  position: absolute;
+  top: 126px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  background-image: url("img/rune1.png");
+}
+
+#buff2 {
+  position: absolute;
+  top: 126px;
+  left: 38px;
+  width: 32px;
+  height: 32px;
+  background-image: url("img/rune2.png");
+}
+
+#buff3 {
+  position: absolute;
+  top: 184px;
+  left: 21px;
+  width: 32px;
+  height: 32px;
+  background-image: url("img/rune3.png");
+}
+
+.buffText {
+  line-height: 32px;
+  text-align: center;
+  margin: 0;
+  margin-top: 30px;
+}
+
+#blueKeyIcon {
+  position: absolute;
+  top: 132px;
+  right: 10px;
+  display: none;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#ringIcon {
+  position: absolute;
+  top: 170px;
+  right: 10px;
+  display: none;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#sapphireIcon {
+  position: absolute;
+  top: 208px;
+  right: 10px;
+  display: none;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#hyperGemIcon {
+  position: absolute;
+  top: 246px;
+  right: 10px;
+  display: none;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#glockIcon {
+  position: absolute;
+  top: 284px;
+  right: 10px;
+  display: none;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#macIcon {
+  position: absolute;
+  top: 322px;
+  right: 10px;
+  display: none;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#honey1 {
+  position: absolute;
+  bottom: 48px;
+  left: 10px;
+}
+
+#honeyText1 {
+  position: absolute;
+  bottom: 54px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+}
+
+#honeyButton1 {
+  position: absolute;
+  bottom: 52px;
+  right: 10px;
+  background-color: #e6bf40;
+  line-height: 28px;
+}
+
+#honey2 {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#honeyText2 {
+  position: absolute;
+  bottom: 16px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+}
+
+#honeyButton2 {
+  position: absolute;
+  bottom: 14px;
+  right: 10px;
+  background-color: #ecd68d;
+  line-height: 28px;
+}
+
+/*Main div stuff*/
+#floorUpButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#floorDownButton {
+  position: absolute;
+  bottom: 10px;
+  left: 126px;
+}
+
+#enterFloorButton {
+  position: absolute;
+  bottom: 44px;
+  left: 10px;
+  background-color: #e0e0a0;
+  display: none;
+}
+
+#toGroundFloorButton {
+  position: absolute;
+  bottom: 150px;
+  left: 10px;
+  background-color: #a0e0a0;
+  display: none;
+}
+
+#toFloor49Button {
+  position: absolute;
+  bottom: 78px;
+  left: 10px;
+  background-color: #c0a0e0;
+  display: none;
+}
+
+#toFloor99Button {
+  position: absolute;
+  bottom: 78px;
+  left: 113px;
+  background-color: #c0a0e0;
+  display: none;
+}
+
+#toFloor149Button {
+  position: absolute;
+  bottom: 78px;
+  left: 216px;
+  background-color: #c0a0e0;
+  display: none;
+}
+
+#toFloor248Button {
+  position: absolute;
+  bottom: 114px;
+  left: 10px;
+  background-color: #c0a0e0;
+  display: none;
+}
+
+#toFloor299Button {
+  position: absolute;
+  bottom: 114px;
+  left: 122px;
+  background-color: #c0a0e0;
+  display: none;
+}
+
+#toFloor351Button {
+  position: absolute;
+  bottom: 114px;
+  left: 234px;
+  background-color: #c0a0e0;
+  display: none;
+}
+
+#newRoomButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: none;
+}
+
+#toStairwellButton {
+  position: absolute;
+  bottom: 10px;
+  left: 172px;
+  display: none;
+}
+
+/*Monster stuff*/
+#monsterDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 320px;
+  height: 81%;
+  border: 3px outset #b0b0b0;
+  display: none;
+}
+
+#monsterNameDiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 238px;
+  height: 40px;
+  border: 3px outset #b0b0b0;
+}
+
+#monsterName {
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin: 2px;
+  font-size: 24px;
+  color: #800000;
+}
+
+#monsterIconDiv {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  border: 3px outset #b0b0b0;
+}
+
+#monsterIcon {
+  margin-top: 19px;
+  margin-left: 19px;
+  transform: scale(2, 2);
+  image-rendering: pixelated;
+}
+
+#monsterHealthBar {
+  position: absolute;
+  top: 54px;
+  left: 6px;
+  width: 224px;
+  height: 18px;
+  border: 3px outset #b0b0b0;
+  background-color: #606060;
+}
+
+#monsterHealthBarInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color: #ff0000;
+}
+
+#monsterHealthBarText {
+  line-height: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#monsterAttackInfo {
+  position: absolute;
+  top: 88px;
+  left: 6px;
+  margin: 0;
+}
+
+#attackButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#fleeButton {
+  position: absolute;
+  bottom: 10px;
+  left: 92px;
+  background-color: #ffb0b0;
+  display: none;
+}
+
+/*Smith stuff*/
+.smithDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 410px;
+  height: 81%;
+  border: 3px outset #b0b0b0;
+  display: none;
+}
+
+.beeIcon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  image-rendering: pixelated;
+}
+
+.beeText {
+  position: absolute;
+  top: 0;
+  right: 66px;
+  width: 60%;
+  text-align: right;
+}
+
+.smithLine {
+  position: absolute;
+  left: 10px;
+  width: 390px;
+  height: 2px;
+  background-color: #505050;
+}
+
+.smithButton {
+  width: 120px;
+  position: absolute;
+  left: 80px;
+}
+
+.smithButton2 {
+  width: 90px;
+  position: absolute;
+  left: 95px;
+}
+
+.runeIcon {
+  position: absolute;
+  right: 40px;
+  width: 64px;
+  image-rendering: pixelated;
+}
+
+.runeText {
+  font-size: 26px;
+  position: absolute;
+  right: 0;
+  width: 30%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.runeInfo {
+  position: absolute;
+  left: 0;
+  width: 62%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/*Hotkey div stuff*/
+#hotkeysDiv {
+  position: absolute;
+  top: calc(25% - 3px);
+  left: calc(25% - 3px);
+  width: 50%;
+  height: 50%;
+  background-color: #808080;
+  overflow: hidden;
+  display: none;
+}
+
+/*Tip history stuff*/
+#tipHistoryDiv {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: #303030;
+  overflow: auto;
+  display: none;
+}
+
+#tipHistoryHeader {
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  font-size: 33px;
+}
+
+#tipHistory {
+  color: white;
+  width: 60%;
+  margin-top: 32px;
+}
+
+
+/*Death div stuff*/
+#deathDiv {
+  position: absolute;
+  top: calc(10% - 3px);
+  left: calc(10% - 3px);
+  width: 80%;
+  height: 80%;
+  border: 3px outset #707070;
+  background-color: #404040;
+  display: none;
+}
+
+#deathHeader {
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 100px;
+  margin-top: 20px;
+}
+
+#deathInfo {
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 120px;
+}
+
+#deathClose {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  height: 40px;
+}
+
+/*Altar stuff*/
+#altarDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 320px;
+  height: 81%;
+  border: 3px outset #ff8080;
+  display: none;
+}
+
+.cocoaUpgrade {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: #e8b8a0;
+}
+
+/*Shark shop stuff*/
+#sharkShopDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 450px;
+  height: 81%;
+  border: 3px outset #80b0ff;
+  display: none;
+}
+
+#shark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 96px;
+  image-rendering: pixelated;
+}
+
+#sharkText {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  margin: 0;
+  font-size: 22px;
+  width: 330px;
+  color: #203040;
+}
+
+.sharkUpgrade {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/*Cocoa bar stuff*/
+#cocoaBarDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 430px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #ffd080;
+  display: none;
+}
+
+#cocoaDiv {
+  display: none;
+}
+
+#cocoaBarMilestoneInfo {
+  position: absolute;
+  top: 3px;
+  left: calc(20% - 11px);
+  width: 60%;
+  height: 25%;
+  padding: 8px;
+  background-color: #c0b070;
+  border: 3px outset #ffd080;
+  font-size: 16px;
+  text-align: center;
+  display: none;
+}
+
+.cocoaBarMilestoneDiv {
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 33px;
+  line-height: 64px;
+  color: #504830;
+  border: 3px outset #ffd080;
+  display: inline-block;
+}
+
+/*Combinator stuff*/
+#combinatorDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 430px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #909090;
+  display: none;
+}
+
+/*Combinator upgrade stuff*/
+#combinatorUpgradeDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 430px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #909090;
+  display: none;
+}
+
+.combinatorUpgrade {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/*Combinator upgrade 2 stuff*/
+#combinatorUpgrade2Div {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 430px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #909090;
+  display: none;
+}
+
+.combinatorUpgrade2 {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/*Monster blood stuff*/
+#monsterBloodDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 450px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #909090;
+  display: none;
+}
+
+.bloodProducer {
+  background-color: #602020;
+  color: #e0a0a0;
+  position: absolute;
+  left: 40%;
+  width: 206px;
+}
+
+.bloodProducerAmount {
+  position: absolute;
+  right: 61%;
+  margin: 0;
+  line-height: 30px;
+}
+
+.bloodProducerCost {
+  position: absolute;
+  left: 85%;
+  margin: 0;
+  line-height: 30px;
+}
+
+#bloodGemInfo {
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  margin: 8px;
+  line-height: 24px;
+}
+
+/*Monster blood upgrade stuff*/
+#monsterBloodUpgradeDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 430px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #909090;
+  display: none;
+}
+
+.monsterBloodUpgrade {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/*Shark 2 stuff*/
+#shark2Div {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 450px;
+  height: 81%;
+  border: 3px outset #80b0ff;
+  display: none;
+}
+
+#shark2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 96px;
+  image-rendering: pixelated;
+}
+
+#sharkText2 {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  margin: 0;
+  font-size: 22px;
+  width: 330px;
+  color: #203040;
+}
+
+#continueButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.sharkUpgrade2 {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+  display: none;
+}
+
+/*Glock stuff*/
+#glockGetDiv {
+  position: absolute;
+  top: calc(10% - 3px);
+  left: calc(10% - 3px);
+  width: 80%;
+  height: 80%;
+  border: 3px outset #909090;
+  background-color: #606060;
+  display: none;
+}
+
+#shine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  opacity: 0.7;
+  transform: translate(-50%, -50%);
+  image-rendering: pixelated;
+}
+
+#glock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  transform: translate(-50%, -50%);
+  image-rendering: pixelated;
+  filter: drop-shadow(20px 20px rgba(0, 0, 0, 0.3));
+}
+
+/*Golden upgrade stuff*/
+#goldenUpgradeDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 450px;
+  height: 81%;
+  border: 3px outset #f0c060;
+  display: none;
+}
+
+.goldenUpgrade {
+  height: 32px;
+  font-size: 11.5px;
+  margin-top: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/*Golden eel stuff*/
+#goldenEelDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 450px;
+  height: 81%;
+  border: 3px outset #f0c060;
+  display: none;
+}
+
+#goldenEel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 192px;
+  image-rendering: pixelated;
+}
+
+#goldenEelBar {
+  position: absolute;
+  top: 60px;
+  left: 6px;
+  width: 430px;
+  height: 18px;
+  border: 3px outset #b0b0b0;
+  background-color: #606060;
+}
+
+#goldenEelBarInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color: #ff0000;
+}
+
+#goldenEelBarText {
+  line-height: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#goldenEelAttackInfo {
+  text-align: center;
+  margin-top: 230px;
+  font-size: 22px;
+}
+
+#goldenEelAttackButton {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*Ending stuff*/
+#endingDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 400px;
+  height: 81%;
+  border: 3px outset #b0b0b0;
+  display: none;
+  background-image: url('img/parallaxMountain.png');
+  background-size: 680px 400px;
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+
+#finalTime {
+  text-align: center;
+}
+
+#endingText {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 33px;
+  margin: 0;
+}
+
+#endingText2 {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 55px;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+/*Dark orb stuff*/
+#darkOrbDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 390px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 81%;
+  border: 3px outset #909090;
+  display: none;
+}
+
+#darkOrbInnerDiv {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 364px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 73%;
+  border: 3px outset #909090;
+}
+
+/*Extras stuff*/
+#extrasDiv {
+  display: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#fragment1 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#fragment1Text {
+  position: absolute;
+  top: 18px;
+  left: 44px;
+  line-height: 18px;
+  margin: 0;
+}
+
+#fragment2 {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+#fragment2Text {
+  position: absolute;
+  top: 18px;
+  left: 134px;
+  line-height: 18px;
+  margin: 0;
+}
+
+#fragment3 {
+  position: absolute;
+  top: 10px;
+  left: 190px;
+}
+
+#fragment3Text {
+  position: absolute;
+  top: 18px;
+  left: 224px;
+  line-height: 18px;
+  margin: 0;
+}
+
+#honey3 {
+  position: absolute;
+  top: 46px;
+  left: 10px;
+  display: none;
+}
+
+#honeyText3 {
+  position: absolute;
+  top: 54px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#cocoaBarIcon {
+  position: absolute;
+  top: 82px;
+  left: 10px;
+  display: none;
+}
+
+#cocoaBarText {
+  position: absolute;
+  top: 90px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#darkOrbIcon {
+  position: absolute;
+  top: 118px;
+  left: 10px;
+  display: none;
+}
+
+#darkOrbText {
+  position: absolute;
+  top: 126px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#hyperplasmIcon {
+  position: absolute;
+  top: 154px;
+  left: 10px;
+  display: none;
+}
+
+#hyperplasmText {
+  position: absolute;
+  top: 162px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#darkBarIcon {
+  position: absolute;
+  top: 190px;
+  left: 10px;
+  display: none;
+}
+
+#darkBarText {
+  position: absolute;
+  top: 198px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#starBarIcon {
+  position: absolute;
+  top: 226px;
+  left: 10px;
+  display: none;
+}
+
+#starBarText {
+  position: absolute;
+  top: 234px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#bloodGemIcon {
+  position: absolute;
+  top: 262px;
+  left: 10px;
+  display: none;
+}
+
+#bloodGemText {
+  position: absolute;
+  top: 270px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+#goldenHoneyIcon {
+  position: absolute;
+  top: 298px;
+  left: 10px;
+  display: none;
+}
+
+#goldenHoneyText {
+  position: absolute;
+  top: 306px;
+  left: 52px;
+  line-height: 18px;
+  margin: 0;
+  display: none;
+}
+
+/*Options stuff*/
+#saveButton {
+  margin-top: 46px;
+}
+
+#exportButton, #importButton {
+  margin-top: 8px;
+}
+
+#resetButton {
+  margin-top: 8px;
+  background-color: #e0b0b0;
+}
+
+#timePlayed {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: #404040;
+  margin: 0;
+}

@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta content="Endless Stairwell" property="og:title" />
+    <meta content="What lies up those deathly stairs...?" property="og:description" />
+    <meta content="Endless Stairwell.html" property="og:url" />
+    <meta content="img/stairs.png" property="og:image" />
+    <meta content="#7ab8c4" data-react-helmet="true" name="theme-color" />
+    <title>无尽阶梯</title>
+    <link rel="icon" href="img/stairs.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!--Prefetched images to load before usage-->
+    <!--Someone PLEASE tell me a better way to do this!-->
+    <link rel="prefetch" href="img/tinyMouse.png">
+    <link rel="prefetch" href="img/enemy1.png">
+    <link rel="prefetch" href="img/enemy2.png">
+    <link rel="prefetch" href="img/enemy3.png">
+    <link rel="prefetch" href="img/enemy4.png">
+    <link rel="prefetch" href="img/enemy5.png">
+    <link rel="prefetch" href="img/enemy6.png">
+    <link rel="prefetch" href="img/enemy7.png">
+    <link rel="prefetch" href="img/enemy8.png">
+    <link rel="prefetch" href="img/enemy9.png">
+    <link rel="prefetch" href="img/enemy10.png">
+    <link rel="prefetch" href="img/enemy11.png">
+    <link rel="prefetch" href="img/enemy12.png">
+    <link rel="prefetch" href="img/enemy13.png">
+    <link rel="prefetch" href="img/enemy14.png">
+    <link rel="prefetch" href="img/enemy15.png">
+    <link rel="prefetch" href="img/enemy16.png">
+    <link rel="prefetch" href="img/enemy17.png">
+    <link rel="prefetch" href="img/enemy18.png">
+    <link rel="prefetch" href="img/enemy19.png">
+    <link rel="prefetch" href="img/enemy20.png">
+    <link rel="prefetch" href="img/enemy21.png">
+    <link rel="prefetch" href="img/enemy22.png">
+    <link rel="prefetch" href="img/enemy23.png">
+    <link rel="prefetch" href="img/enemy24.png">
+    <link rel="prefetch" href="img/enemy25.png">
+    <link rel="prefetch" href="img/enemy26.png">
+    <link rel="prefetch" href="img/enemy27.png">
+    <link rel="prefetch" href="img/enemy28.png">
+    <link rel="prefetch" href="img/enemy29.png">
+    <link rel="prefetch" href="img/enemy30.png">
+    <link rel="prefetch" href="img/enemy31.png">
+    <link rel="prefetch" href="img/enemy32.png">
+    <link rel="prefetch" href="img/enemy33.png">
+    <link rel="prefetch" href="img/enemy34.png">
+    <link rel="prefetch" href="img/enemy35.png">
+    <link rel="prefetch" href="img/enemy36.png">
+    <link rel="prefetch" href="img/enemy37.png">
+    <link rel="prefetch" href="img/enemy37dead.png">
+    <link rel="prefetch" href="img/sharkDoobie.png">
+  </head>
+  <body>
+    <!--Windows icons/start button-->
+    <img id="windowsIcons" src="img/Windows_icons.png">
+    <img id="startButton" src="img/Start_button.png">
+
+    <!--Windows bottom bar-->
+    <div class="window" id="bottomBar">
+		  <div id="timeBox"><p id="theFuckingTime">00:00 AM</p></div>
+	  </div>
+
+    <!--Game window-->
+    <div id="gameWindow" class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">无尽阶梯</div>
+      </div>
+      <div id="game" class="window-body">
+        <!--Health and stats div-->
+        <div class="container" style="grid-row: 1; grid-column: 1 / span 1; display: none;">
+          <!--Health and energy bars-->
+          <p style="text-align: center; margin: 5px;">血量</p>
+          <div id="healthBar"><div id="healthBarInner"></div><p id="healthBarText">100/100</p></div>
+          <p style="text-align: center; margin: 5px; margin-top: 15px;">能量</p>
+          <div id="energyBar"><div id="energyBarInner"></div><p id="energyBarText">100%</p></div>
+
+          <!--Level and stats-->
+          <p style="text-align: center; margin: 5px; margin-top: 18px;"><span style="font-size: 24px">等级 <span id="level">1</span></span><br><span id="nextLevelText">（下一等级进度：<span id="xpToNextLevel">0</span>% ）</span></p>
+          <p style="line-height: 30px; margin-top: 54px">攻击伤害：<span id="attackDamage">0</span><br>总经验：<span id="totalXP">0</span><span id="XPSoftcap"></span><br>杀怪总数：<span id="monstersKilled">0</span><br><span id="fleeCooldownInfo"></span></p>
+
+          <!--Buffs-->
+          <div id="buff1"><p class="buffText">30</p></div>
+          <div id="buff2"><p class="buffText">30</p></div>
+          <div id="buff3"><p class="buffText">30</p></div>
+
+          <!--One-time item icons-->
+          <img id="blueKeyIcon" src="img/key.png">
+          <img id="ringIcon" src="img/ring.png">
+          <img id="sapphireIcon" src="img/sapphire.png">
+          <img id="hyperGemIcon" src="img/hyperGem.png">
+          <img id="glockIcon" src="img/glockBordered.png">
+          <img id="macIcon" src="img/macBordered.png">
+
+          <!--Honey and vanilla honey-->
+          <img id="honey1" src="img/honey.png">
+          <p id="honeyText1">蜂蜜：<span id="honey">0</span></p>
+          <button id="honeyButton1" onclick="consumeHoney(1)">使用</button>
+          <img id="honey2" src="img/honey2.png">
+          <p id="honeyText2">香草蜂蜜：<span id="vanillaHoney">0</span></p>
+          <button id="honeyButton2" onclick="consumeHoney(2)">使用</button>
+        </div>
+
+        <!--Main div-->
+        <div class="container" style="grid-row: 1; grid-column: 2 / span 4;">
+          <!--Info-->
+          <h2>你现在在 <span id="currentFloor"> 地面</span></h2>
+          <p id="info" style="width: 50%;"><b>信息</b></p>
+          <p id="floorContentsInfo" style="width: 50%;"></p>
+          <p id="roomInfo" style="width: 50%;"></p>
+
+          <!--Stairwell-related buttons-->
+          <button id="floorUpButton" onclick="floorUp()">向上一层</button>
+          <button id="floorDownButton" onclick="floorDown()" disabled>向下一层</button>
+          <button id="enterFloorButton" onclick="enterFloor()">进入此层</button>
+          <button id="toGroundFloorButton" onclick="toGroundFloor()">前往地面</button>
+          <button id="toFloor49Button" onclick="toFloor49()">到 49 层</button>
+          <button id="toFloor99Button" onclick="toFloor99()">到 99 层</button>
+          <button id="toFloor149Button" onclick="toFloor149()">到 149 层</button>
+          <button id="toFloor248Button" onclick="toFloor248()">到 248 层</button>
+          <button id="toFloor299Button" onclick="toFloor299()">到 299 层</button>
+          <button id="toFloor351Button" onclick="toFloor351()">到 351 层</button>
+
+          <!--Room-related buttons-->
+          <button id="newRoomButton" onclick="newRoom()">进入下一房间</button>
+          <button id="toStairwellButton" onclick="toStairwell()">回到楼梯</button>
+
+          <!--Monster div-->
+          <div id="monsterDiv">
+            <div id="monsterNameDiv"><p id="monsterName">Big spider</p></div>
+            <div id="monsterIconDiv"><img id="monsterIcon" src="img/enemy1.png"></div>
+            <div id="monsterHealthBar"><div id="monsterHealthBarInner"></div><p id="monsterHealthBarText">100/100</p></div>
+            <p id="monsterAttackInfo">怪物在 <span id="monsterAttackCooldown">0.0</span>s 后攻击<br>伤害: <span id="monsterDamage">0</span></p>
+            <button id="attackButton" onclick="attack()">攻击</button>
+            <button id="fleeButton" onclick="flee()">逃跑 (<span id="fleeCooldown">0</span>s)</button>
+          </div>
+
+          <!--Smith div-->
+          <div class="smithDiv">
+            <img class="beeIcon" src="img/bee.png">
+            <p id="beeText">你好！我是本基·B·史密斯，很高兴为您提供一些<br>临时性的符文。</p>
+            <div class="smithLine" style="top: 70px;"></div>
+
+            <button class="smithButton" style="top: 130px;" onclick="smithRune(1)">3 <img src="img/fragment1.png" style="height: 16px">, 1 <img src="img/fragment2.png" style="height: 16px"> , 1 <img src="img/honey.png" style="height: 16px"></button>
+            <img class="runeIcon" style="top: 76px;" src="img/rune1.png">
+            <p class="runeText" style="color: #a00000; top: 108px">红符文</p>
+            <p class="runeInfo" style="color: #a00000; top: 80px">多获得 75% 的攻击伤害和经验</p>
+            <div class="smithLine" style="top: 170px;"></div>
+
+            <button class="smithButton" style="top: 230px;" onclick="smithRune(2)">3 <img src="img/fragment2.png" style="height: 16px">, 1 <img src="img/fragment3.png" style="height: 16px"> , 1 <img src="img/honey.png" style="height: 16px"></button>
+            <img class="runeIcon" style="top: 176px;" src="img/rune2.png">
+            <p class="runeText" style="color: #008000; top: 208px">绿符文</p>
+            <p class="runeInfo" style="color: #008000; top: 180px">获得物品的概率提高 40%</p>
+            <div class="smithLine" style="top: 270px;"></div>
+
+            <button class="smithButton" style="top: 330px;" onclick="smithRune(3)">3 <img src="img/fragment3.png" style="height: 16px">, 1 <img src="img/fragment1.png" style="height: 16px"> , 1 <img src="img/honey.png" style="height: 16px"></button>
+            <img class="runeIcon" style="top: 276px;" src="img/rune3.png">
+            <p class="runeText" style="color: #0000a0; top: 308px">蓝符文</p>
+            <p class="runeInfo" style="color: #0000a0; top: 280px">能量的恢复速度提高 75%</p>
+          </div>
+
+          <!--Smith div 2-->
+          <div class="smithDiv">
+            <img class="beeIcon" src="img/bee.png">
+            <p id="beeText">你好！我是本基·B·史密斯，很高兴为您提供一些<br>永久性的符文。</p>
+            <div class="smithLine" style="top: 70px;"></div>
+
+            <button class="smithButton2" style="top: 96px;" onclick="smithPermaRune(1)">4 <img src="img/fragment1.png" style="height: 16px">, 1 <img src="img/honey.png" style="height: 16px"></button>
+            <img class="runeIcon" style="top: 110px" src="img/rune1.png">
+            <p class="runeText" style="color: #a00000; top: 54px">红* 符文</p>
+            <p class="runeInfo" style="color: #a00000; top: 120px">多获得 5% 的经验 (+<span id="redPermanentBoost">0</span>%, <span id="redPermanentBought">0</span>/10)</p>
+            <div class="smithLine" style="top: 170px;"></div>
+
+            <button class="smithButton2" style="top: 196px;" onclick="smithPermaRune(2)">4 <img src="img/fragment2.png" style="height: 16px">, 1 <img src="img/honey.png" style="height: 16px"></button>
+            <img class="runeIcon" style="top: 210px" src="img/rune2.png">
+            <p class="runeText" style="color: #008000; top: 154px">绿* 符文</p>
+            <p class="runeInfo" style="color: #008000; top: 220px">获得物品的概率提高 5% (+<span id="greenPermanentBoost">0</span>%, <span id="greenPermanentBought">0</span>/5)</p>
+            <div class="smithLine" style="top: 270px;"></div>
+
+            <button class="smithButton2" style="top: 296px;" onclick="smithPermaRune(3)">4 <img src="img/fragment3.png" style="height: 16px">, 1 <img src="img/honey.png" style="height: 16px"></button>
+            <img class="runeIcon" style="top: 310px" src="img/rune3.png">
+            <p class="runeText" style="color: #0000a0; top: 254px">蓝* 符文</p>
+            <p class="runeInfo" style="color: #0000a0; top: 320px">能量的恢复速度提高 10% (+<span id="bluePermanentBoost">0</span>%, <span id="bluePermanentBought">0</span>/5)</p>
+          </div>
+
+          <!--Altar div-->
+          <div id="altarDiv">
+            <h2 style="color: #a03030">祭坛</h2>
+            <center><button id="cocoaPrestigeButton" style="height: 64px; width: 95%" onclick="cocoaPrestige()">重置所有进度，获得<br><span id="cocoaHoneyToGet">0</span> <img src="img/honey3.png" width="16px"> <b>可可蜂蜜</b><br>下一个需要 <span id="nextCocoaHoneyRequirement">500</span> 等级</button>
+
+            <!--Cocoa upgrades-->
+            <button class="cocoaUpgrade" style="margin-top: 16px" onclick="buyAltarUpgrade(1)">重置后保留 5000 经验<br>价格 2 可可蜂蜜</button>
+            <button class="cocoaUpgrade" onclick="buyAltarUpgrade(2)">重置后保留逃跑按钮<br>价格 2 可可蜂蜜</button>
+            <button class="cocoaUpgrade" onclick="buyAltarUpgrade(3)">香草蜂蜜加倍可可蜂蜜的获得量<br>价格 4 可可蜂蜜</button>
+            <button class="cocoaUpgrade" onclick="buyAltarUpgrade(4)">怪物第一次攻击的冷却时间为 4.5s<br>价格 35 可可蜂蜜</button>
+            <button class="cocoaUpgrade" onclick="buyAltarUpgrade(5)">获得一个瞬移按钮<br>价格 100 可可蜂蜜</button>
+            <button class="cocoaUpgrade" onclick="buyAltarUpgrade(6)">重置后保留所有一次性购买项目<br>价格 500 可可蜂蜜</button>
+            <button class="cocoaUpgrade" onclick="buyAltarUpgrade(7)">将你的幸运戒指铸造成暗影戒指<br>价格 2000 可可蜂蜜</button></center>
+          </div>
+
+          <!--Shark shop div-->
+          <div id="sharkShopDiv">
+            <img id="shark" src="img/shark.png">
+            <p id="sharkText">提安哪，一个大客户！欢迎！欢迎！我有些好东西！来选一个吧！！！！！！！</p><br>
+
+            <!--Shark upgrades-->
+            <button id="sharkTrade" style="margin-left: 10px; margin-top: 120px; margin-bottom: 14px;" onclick="buySharkUpgrade(1)">20 <img src="img/honey.png" style="width: 16px"> + 1 <img src="img/honey4.png" style="width: 16px"> -> 1 <img src="img/honey2.png" style="width: 16px"></button><br>
+            <button class="sharkUpgrade" style="margin-left: 10px" onclick="buySharkUpgrade(2)">移除经验的软上限<br>价格 2 蜜浆</button>
+            <button class="sharkUpgrade" onclick="buySharkUpgrade(3)">获得双倍的可可蜂蜜<br>价格 2 蜜浆</button>
+            <button class="sharkUpgrade" style="margin-left: 10px" onclick="buySharkUpgrade(4)">获得到 149 层的按钮<br>价格 3 蜜浆</button>
+            <button class="sharkUpgrade" onclick="buySharkUpgrade(5)">香草蜂蜜加倍蜜浆的获得量<br>价格 5 蜜浆</button>
+            <button class="sharkUpgrade" style="margin-left: 10px" onclick="buySharkUpgrade(6)">100 层以上的敌人会掉蜂蜜<br>价格 25 蜜浆</button>
+            <button class="sharkUpgrade" onclick="buySharkUpgrade(7)">再次获得双倍的可可蜂蜜<br>价格 30 蜜浆</button>
+            <button class="sharkUpgrade" style="margin-left: 10px" onclick="buySharkUpgrade(8)">重置后蜂蜜的数量不变<br>价格 35 蜜浆</button>
+            <button class="sharkUpgrade" onclick="buySharkUpgrade(9)">重置后香草蜂蜜的数量不变<br>价格 60 蜜浆</button>
+            <button class="sharkUpgrade" style="margin-left: 10px" onclick="buySharkUpgrade(10)">杀死怪物后血量加满<br>价格 75 蜜浆</button>
+            <button class="sharkUpgrade" onclick="buySharkUpgrade(11)">购买鲨鱼蓝宝石<br>价格 150 蜜浆</button>
+          </div>
+
+          <!--Cocoa bar div-->
+          <div id="cocoaBarDiv">
+            <div id="cocoaBarMilestoneInfo"><p id="cocoaBarMilestoneText" style="margin-top: 0;"><span style="font-size: 33px; line-height: 42px;">1 可可砖块</span><br>重置后保留 1,000,000 经验</p></div>
+            <center><button style="height: 44px; margin-top: 10px" id="getCocoaBarsButton" onclick="gainCocoaBars()">将所有的可可蜂蜜变成一个 <img src="img/cocoaBar.png" width="16px"> <b>可可砖块</b><br>需要 <span id="cocoaBarRequirement">1.000e10</span> 可可蜂蜜</button><br><br><p style="font-size: 22px">可可砖块里程碑</p>
+
+            <!--Cocoa bar milestones-->
+            <div class="cocoaBarMilestoneDiv" onmouseover="displayCBM(1)" onmouseout="hideCBM()">1</div>
+            <div class="cocoaBarMilestoneDiv" onmouseover="displayCBM(2)" onmouseout="hideCBM()">2</div>
+            <div class="cocoaBarMilestoneDiv" onmouseover="displayCBM(3)" onmouseout="hideCBM()">4</div>
+            <div class="cocoaBarMilestoneDiv" onmouseover="displayCBM(4)" onmouseout="hideCBM()">5</div>
+            <div class="cocoaBarMilestoneDiv" onmouseover="displayCBM(5)" onmouseout="hideCBM()">9</div>
+            <div class="cocoaBarMilestoneDiv" onmouseover="displayCBM(6)" onmouseout="hideCBM()">10</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(7)" onmouseout="hideCBM()">11</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(8)" onmouseout="hideCBM()">13</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(9)" onmouseout="hideCBM()">15</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(10)" onmouseout="hideCBM()">16</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(11)" onmouseout="hideCBM()">19</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(12)" onmouseout="hideCBM()">20</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(13)" onmouseout="hideCBM()">26</div>
+            <div class="cocoaBarMilestoneDiv" style="display: none;" onmouseover="displayCBM(14)" onmouseout="hideCBM()">30</div></center>
+          </div>
+
+          <!--Combinator div-->
+          <div id="combinatorDiv">
+            <h2 style="font-size: 33px; color: #204020; margin-bottom: 20px">合成器</h2>
+            <center>
+              <button class="combinatorButton" onclick="combinate(1)" disabled><span id="hyperplasmCost1">1.000e10</span> <img src="img/honey.png" style="width: 16px;"> &nbsp;&nbsp;&gt;&nbsp;&nbsp; <span id="hyperplasmGain">1</span> <img src="img/hyperplasm.png" style="width: 16px;"> &nbsp;&nbsp;&lt;&nbsp;&nbsp; <span id="hyperplasmCost2">1.000e10</span> <img src="img/honey4.png" style="width: 16px;"></button>
+              <p class="combinatorText" style="margin-top: 4px">超级蜜浆（未解锁）</p>
+              <button class="combinatorButton" onclick="combinate(2)" disabled><span id="darkBarCost1">10</span> <img src="img/cocoaBar.png" style="width: 16px;"> &nbsp;&nbsp;&gt;&nbsp;&nbsp; 1 <img src="img/darkBar.png" style="width: 16px;"> &nbsp;&nbsp;&lt;&nbsp;&nbsp; <span id="darkBarCost2">1</span> <img src="img/darkOrb.png" style="width: 16px;"></button>
+              <p class="combinatorText" style="margin-top: 4px">黑暗砖块（未解锁）</p>
+              <button class="combinatorButton" onclick="combinate(3)" disabled><span id="starBarCost">4</span> <img src="img/darkBar.png" style="width: 16px;"> &nbsp;&nbsp;&gt;&nbsp;&nbsp; 1 <img src="img/starBar.png" style="width: 16px;"> &nbsp;&nbsp;&lt;&nbsp;&nbsp; 20 <img src="img/hyperplasm.png" style="width: 16px;"></button>
+              <p class="combinatorText" style="margin-top: 4px">星空砖块（未解锁）</p>
+            </center>
+          </div>
+
+          <!--Combinator upgrade div-->
+          <div id="combinatorUpgradeDiv">
+            <h2 style="font-size: 26px; color: #204020; margin-bottom: 40px;">合成器升级</h2>
+            <center><button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(1)">解锁 <b>超级蜜浆</b> 合成<br>需要 1.000G2,000 可可蜂蜜</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(2)">层级 5 的怪物掉落大量的蜂蜜和蜜浆<br>需要 1 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(3)">获得到 248 层的按钮<br>需要 3 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(4)">解锁 <b>黑暗砖块</b> 合成<br>需要 4 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(5)">解锁 <b>星空砖块</b> 合成<br>需要 100 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(6)">获得更多的超级蜜浆，同时其价格会大幅增长<br>需要 1 星空砖块</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(7)">星空砖块增加蜂蜜和蜜浆的获得量<br>需要 6,000 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(8)">星空砖块少花费 3 个黑暗砖块<br>需要 9,000 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(9)">层级 5 的怪物掉落超级蜜浆<br>需要 13,000 超级蜜浆</button>
+            <button class="combinatorUpgrade" onclick="buyCombinatorUpgrade(10)">打造 <b>超级宝石</b><br>需要 1.000e100 超级蜜浆</button></center>
+          </div>
+
+          <!--Combinator upgrade 2 div-->
+          <div id="combinatorUpgrade2Div">
+            <h2 style="font-size: 26px; color: #604038; margin-bottom: 25px;">合成器升级 2</h2>
+            <center><button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(1)">层级 6 的怪物掉落超级蜜浆<br>需要 1.000e200 超级蜜浆</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(2)">层级 6 的怪物掉落大量经验 (1/3)<br>需要 1J50 超级蜜浆</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(3)">层级 6 的怪物掉落大量经验 (2/3)<br>需要 1J110 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(4)">层级 6 的怪物掉落大量经验 (3/3)<br>需要 1J300 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(5)">获得到 299 层的按钮<br>需要 1J1,000 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(6)">移除层级 6 的怪物的血量上限<br>需要 1J1,500 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(7)">层级 6 的怪物掉落黑暗砖块<br>需要 1J2,000 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(8)">星空砖块增加层级 6 的经验获得量<br>需要 8 星空砖块</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(9)">层级 6 的怪物掉落更多的黑暗砖块<br>需要 1J40,000 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(10)">黑暗球体大幅增加层级 6 的经验获得量<br>需要 1J100,000 可可蜂蜜</button>
+            <button class="combinatorUpgrade2" onclick="buyCombinatorUpgrade2(11)">把你的超级宝石打造成星空宝石<br>需要 1J1.000e29 可可蜂蜜 and 4 黑暗球体</button></center>
+          </div>
+
+          <!--Monster blood div-->
+          <div id="monsterBloodDiv">
+            <h2 style="font-size: 26px; margin-bottom: 25px;">你拥有 <span id="monsterBlood">0</span><br><img src="img/bloodVial.png"> <span style="color: #602020">怪物之血</span> <img src="img/bloodVial.png"></h2>
+            <p class="bloodProducerAmount" style="top: 110px"><span id="t1bp">0</span> (+<span id="t1ebp">0</span>)</p>
+            <button class="bloodProducer" style="top: 110px" onclick="buyBloodProducer(1)">购买一个 1 级产血器</button>
+            <p class="bloodProducerCost" style="top: 110px"><span id="t1bpCost">1</span> <img src="img/bloodGem.png" style="width: 16px"></p>
+            <p class="bloodProducerAmount" style="top: 140px"><span id="t2bp">0</span> (+<span id="t2ebp">0</span>)</p>
+            <button class="bloodProducer" style="top: 140px" onclick="buyBloodProducer(2)">购买一个 2 级产血器</button>
+            <p class="bloodProducerCost" style="top: 140px"><span id="t2bpCost">1</span> <img src="img/bloodGem.png" style="width: 16px"></p>
+            <p class="bloodProducerAmount" style="top: 170px"><span id="t3bp">0</span> (+<span id="t3ebp">0</span>)</p>
+            <button class="bloodProducer" style="top: 170px" onclick="buyBloodProducer(3)">购买一个 3 级产血器</button>
+            <p class="bloodProducerCost" style="top: 170px"><span id="t3bpCost">1</span> <img src="img/bloodGem.png" style="width: 16px"></p>
+            <p class="bloodProducerAmount" style="top: 200px"><span id="t4bp">0</span> (+<span id="t4ebp">0</span>)</p>
+            <button class="bloodProducer" style="top: 200px" onclick="buyBloodProducer(4)">购买一个 4 级产血器</button>
+            <p class="bloodProducerCost" style="top: 200px"><span id="t4bpCost">1</span> <img src="img/bloodGem.png" style="width: 16px"></p>
+            <p class="bloodProducerAmount" style="top: 230px"><span id="t5bp">0</span> (+<span id="t5ebp">0</span>)</p>
+            <button class="bloodProducer" style="top: 230px" onclick="buyBloodProducer(5)">购买一个 5 级产血器</button>
+            <p class="bloodProducerCost" style="top: 230px"><span id="t5bpCost">1</span> <img src="img/bloodGem.png" style="width: 16px"></p>
+            <p class="bloodProducerAmount" style="top: 260px"><span id="t6bp">0</span></p>
+            <button class="bloodProducer" style="top: 260px" onclick="buyBloodProducer(6)">购买一个 6 级产血器</button>
+            <p class="bloodProducerCost" style="top: 260px"><span id="t6bpCost">1</span> <img src="img/bloodGem.png" style="width: 16px"></p>
+
+            <p id="bloodGemInfo">你打败了 <span id="gemEelsBeaten">0</span> 只宝石鳗鱼，<br>获得 <span id="bloodGems">0</span> <img src="img/bloodGem.png" style="width: 16px"> <b>血之钻石</b></p>
+          </div>
+
+          <!--Monster blood upgrade div-->
+          <div id="monsterBloodUpgradeDiv">
+            <h2 style="font-size: 26px; color: #602020; margin-bottom: 20px;">怪物之血升级</h2>
+            <center><button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(1)">所有产血器的产量加倍<br>需要 J1e44 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(2)">三倍所有产血器的产量<br>需要 J1e55 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(3)">黑暗球体加倍怪物之血的产量<br>需要 J1e69 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(4)">免费获得 100 个 5 级产血器<br>需要 J1e87 cocoa honey</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(5)">所有产血器的产量乘 10<br>需要 J1e100 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(6)">平方所有产血器的产量<br>需要 J1e122 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(7)">再次平方所有产血器的产量<br>需要 J1e222 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(8)">所有产血器的产量变为 2 的四阶超运算<br>需要 J1e420 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" style="height: 48px" onclick="buyMonsterBloodUpgrade(9)">所有产血器的产量变为 2 的五阶超运算，同时失去所有的产血器<br>产血器的价格大幅增长<br>需要 Je1e100 可可蜂蜜</button>
+            <button class="monsterBloodUpgrade" onclick="buyMonsterBloodUpgrade(10)">打造 <b>超级血钻</b><br>需要 561 血之钻石</button></center>
+          </div>
+
+          <!--Shark 2 div-->
+          <div id="shark2Div">
+            <img id="shark2" src="img/shark.png">
+            <p id="sharkText2"></p><br>
+            <button id="continueButton" onclick="sharkDialogueContinue()">继续</button>
+            <button class="sharkUpgrade2" style="margin-left: 10px; margin-top: 120px; height: 48px;" onclick="buySharkUpgrade2(1)">大幅增加怪物之血的产量，同时失去所有的产血器<br>产血器的价格大幅增长<br>需要 J1J50 可可蜂蜜</button>
+            <button class="sharkUpgrade2" style="margin-left: 10px" onclick="buySharkUpgrade2(2)">层级 7 的怪物掉落海量经验 (1/3)<br>需要 JJ1e80 可可蜂蜜</button>
+            <button class="sharkUpgrade2" onclick="buySharkUpgrade2(3)">层级 7 的怪物掉落海量经验 (2/3)<br>需要 JJ1F60 可可蜂蜜</button>
+            <button class="sharkUpgrade2" style="margin-left: 10px" onclick="buySharkUpgrade2(4)">层级 7 的怪物掉落海量经验 (3/3)<br>需要 JJ1G60 可可蜂蜜</button>
+            <button class="sharkUpgrade2" onclick="buySharkUpgrade2(5)">血之钻石大幅提高层级 7 的经验获得量<br>需要 1,000 血之钻石</button>
+            <button class="sharkUpgrade2" style="margin-left: 10px" onclick="buySharkUpgrade2(6)">血之钻石再次大幅提高层级 7 的经验获得量<br>需要 1,500 血之钻石</button>
+            <button class="sharkUpgrade2" style="margin-left: 10px; background-color: #a0a0a0;" onclick="buySharkUpgrade2(7)">再买一把枪（你不怕火力不足？）<br>需要 1,711 血之钻石</button>
+          </div>
+
+          <!--Golden upgrade div-->
+          <div id="goldenUpgradeDiv">
+            <h2 style="font-size: 26px; color: #604010; margin-bottom: 40px;">黄金升级</h2>
+            <center><button class="goldenUpgrade" onclick="buyGoldenUpgrade(1)">获得到 351 层的按钮<br>需要 1K10 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(2)">获得双倍的黄金蜂蜜 (1/3)<br>需要 1K15 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(3)">获得双倍的黄金蜂蜜 (2/3)<br>需要 1K25 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(4)">获得双倍的黄金蜂蜜 (3/3)<br>需要 1K50 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(5)">层级 8 的所有怪物掉落黄金蜂蜜<br>需要 1K100 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(6)">黄金蜂蜜的获得量受其自身对数的加成<br>需要 1K500 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(7)">血之钻石加倍黄金蜂蜜的获得量<br>需要 1K5,000 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(8)">楼层的难度加倍黄金蜂蜜的获得量<br>需要 K15,000,000 可可蜂蜜</button>
+            <button class="goldenUpgrade" onclick="buyGoldenUpgrade(9)" style="margin-top: 20px; background-color: #a0a0a0;">召唤神秘的枪之力量，黄金蜂蜜的获得量乘以 25,000<br>需要 K100,000,000 可可蜂蜜</button></center>
+          </div>
+
+          <!--Golden eel div-->
+          <div id="goldenEelDiv">
+            <h2 style="font-size: 44px; color: #800000;">黄金鳗鱼</h2>
+            <div id="goldenEelBar"><div id="goldenEelBarInner"></div><p id="goldenEelBarText">100/100</p></div>
+            <img id="goldenEel" src="img/enemy37.png">
+            <p id="goldenEelAttackInfo">下次攻击：<span id="goldenEelAttackCooldown">60.0</span> 秒后</p>
+            <button id="goldenEelAttackButton" onclick="goldenEelAttack()">攻击</button>
+          </div>
+
+          <!--Ending div-->
+          <div id="endingDiv">
+            <p id="finalTime"></p>
+            <p id="endingText">无尽阶梯 - 鳗鱼之弧</p>
+            <p id="endingText2">结束</p>
+          </div>
+
+          <!--Dark orb div-->
+          <div id="darkOrbDiv">
+            <center><button style="height:64px; margin-top: 10px" onclick="darkOrbPrestige()">重置所有进度，获得一个 <img src="img/darkOrb.png" width="16px"> <b>黑暗球体</b>，<br>它能带来一些大幅度的加成<br>需要 <span id="darkOrbRequirement">1.000F100</span> 可可蜂蜜</button></center>
+            <div id="darkOrbInnerDiv">
+              <p id="darkOrbBonuses" style="margin-left: 0; margin-top: 10px">当前加成：<br>无</p>
+            </div>
+          </div>
+        </div>
+
+        <!--Tip div-->
+        <div class="container" style="grid-row: 2; grid-column: 1 / span 1; display: none;">
+          <p style="margin-top: 10px; margin-bottom: 0;"><b>提示：</b></p>
+          <p id="currentTip" style="margin-top: 8px;"></p>
+          <button style="position: absolute; bottom: 8px; left: 8px;" onclick="document.getElementById('hotkeysDiv').style.display = 'block'">热键</button>
+          <button style="position: absolute; bottom: 8px; right: 8px;" onclick="openTipHistory()">历史提示</button>
+        </div>
+
+        <!--Cocoa div-->
+        <div class="container" id="cocoaDiv" style="grid-row: 2; grid-column: 2 / span 1;">
+          <center><img src="img/honey3.png" style="margin-top: 8px; margin-bottom: 0"></center>
+          <p style="margin-top: 8px;">你拥有 <span id="cocoaHoney">0</span> 可可蜂蜜，经验获得量提高 <span id="cocoaBoost">1</span> 倍</p>
+        </div>
+
+        <!--Extras div-->
+        <div class="container" id="extrasDiv" style="grid-row: 2; grid-column: 3 / span 1;">
+          <img id="fragment1" src="img/fragment1.png">
+          <p id="fragment1Text">0</p>
+          <img id="fragment2" src="img/fragment2.png">
+          <p id="fragment2Text">0</p>
+          <img id="fragment3" src="img/fragment3.png">
+          <p id="fragment3Text">0</p>
+          <img id="honey3" src="img/honey4.png">
+          <p id="honeyText3">蜜浆：<span id="honeyplasm">0</span></p>
+          <img id="cocoaBarIcon" src="img/cocoaBar.png">
+          <p id="cocoaBarText">可可砖块：<span id="cocoaBars">0</span></p>
+          <img id="darkOrbIcon" src="img/darkOrb.png">
+          <p id="darkOrbText">黑暗球体：<span id="darkOrbs">0</span></p>
+          <img id="hyperplasmIcon" src="img/hyperplasm.png">
+          <p id="hyperplasmText">超级蜜浆：<span id="hyperplasm">0</span></p>
+          <img id="darkBarIcon" src="img/darkBar.png">
+          <p id="darkBarText">黑暗砖块：<span id="darkBars">0</span></p>
+          <img id="starBarIcon" src="img/starBar.png">
+          <p id="starBarText">星空砖块：<span id="starBars">0</span></p>
+          <img id="bloodGemIcon" src="img/bloodGem.png">
+          <p id="bloodGemText">血之钻石：<span id="bloodGems2">0</span></p>
+          <img id="goldenHoneyIcon" src="img/goldenHoney.png">
+          <p id="goldenHoneyText">黄金蜂蜜：<span id="goldenHoney">0</span></p>
+        </div>
+
+        <!--Options div-->
+        <div class="container" style="grid-row: 2; grid-column: 4 / span 1;">
+          <center><button id="saveButton" onclick="save()">存档</button>
+          <button id="exportButton" onclick="exportGame()">导出</button>
+          <button id="importButton" onclick="importGame()">导入</button>
+          <button id="resetButton" onclick="hardReset()">硬重置</button></center>
+          <p id="timePlayed">0:00:00</p>
+        </div>
+
+        <!--Credits div-->
+        <div class="container" style="grid-row: 2; grid-column: 5 / span 1;">
+          <p style="font-size: 13px; text-align: right;"><b>无尽阶梯 v1.1.2</b><br>作者 Demonin<br><br>灵感来源<br><a href="https://reinhardt-c.github.io/ReinHouse/">莱因哈特的家</a><br><br>游戏使用了：<br><a href="https://github.com/Naruyoko/ExpantaNum.js">ExpantaNum.js</a><br><a href="https://github.com/cloudytheconqueror/letter-notation-format">format-expantanum.js</a><br><a href="https://jquery.com/">jQuery.js</a><br><br>想知道关于未来更新的信息，请加入 <a href="https://discord.gg/7PChmUV3wk">Discord 服务器</a></p>
+        </div>
+
+        <!--Hotkeys div-->
+        <div id="hotkeysDiv" class="window">
+          <div class="title-bar">
+            <div class="title-bar-text">热键</div>
+            <div class="title-bar-controls">
+              <button aria-label="Close" style="height: 10px" onclick="document.getElementById('hotkeysDiv').style.display = 'none'"></button>
+            </div>
+          </div>
+          <div class="window-body">
+            <h2>热键</h2>
+            <p>上箭头 - 向上一层<br>下箭头 - 向下一层<br>右箭头 - 进入此层<br>右箭头 - 进入下一房间<br>左箭头 - 回到楼梯<br>A - 攻击<br>F - 逃跑<br>1 - 使用蜂蜜<br>2 - 使用香草蜂蜜</p>
+            <p id="prestigeHotkey" style="display: none;">P - 重置</p>
+          </div>
+        </div>
+
+        <!--Tip history div-->
+        <div id="tipHistoryDiv">
+          <div class="title-bar" style="height: 15px; position: fixed; width: 1024px; z-index: 2;">
+            <div class="title-bar-text">历史提示</div>
+            <div class="title-bar-controls"><button aria-label="Close" style="height: 10px" onclick="closeTipHistory()"></button></div>
+          </div>
+          <h2 id="tipHistoryHeader">历史提示</h2>
+          <p id="tipHistory"></p>
+        </div>
+
+        <!--Death div-->
+        <div id="deathDiv">
+          <h2 id="deathHeader">你已经死了！</h2>
+          <p id="deathInfo">你掉了一些经验。<br>这个弹窗实在是太大了。</p>
+          <button id="deathClose" onclick="deathClose()">彳亍口巴</button>
+        </div>
+
+        <!--Glock get div-->
+        <div id="glockGetDiv">
+          <h2 style="color: white; text-align: center; text-shadow: 4px 4px #202020;">你已获得：<h2>
+          <img id="shine" src="img/shine.png">
+          <img id="glock" src="img/glock.png">
+          <button style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);" onclick="closeGlockDiv()">酷</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Scripts-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="Mousetrap.js"></script>
+    <script src="ExpantaNum.js"></script>
+    <script src="format-expantanum.js"></script>
+    <script src="constants-CN.js"></script>
+    <script src="script-CN.js" defer></script>
+    <script src="hotkeys-CN.js" defer></script>
+  </body>
+</html>
