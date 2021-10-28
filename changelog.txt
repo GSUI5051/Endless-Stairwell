@@ -1,0 +1,192 @@
+v1.1.3 (28/10/21)
+-Early game enemies drop more XP (again)
+-The 9th cocoa bar text now tells you how to get the 10th cocoa bar
+-The tier 4 enemy grind is faster and easier
+
+v1.1.2 (26/10/21)
+-Enemies at tiers 4-7 are scaled lower, letting them be defeated more easily when first accessed
+-Other small changes and fixes
+
+v1.1.1 (24/10/21)
+-The A hotkey now actually works on the final boss, like it's supposed to
+-(Hopefully) fixed the final time displaying as "0:00:01" on all runs
+
+v1.1 (23/10/21)
+-Some rebalances to the early game!
+-New permanent boosts along with the temporary ones
+-Balanced some XP gain and item chance stuff to account for the new permanent boosts
+-Moved the smithing area down to between floors 5-10
+-Tier 1 enemies have less health
+-Added a teleport button for the ground floor to accommodate the new smithing area location
+-Modified some of the tips to account for the change in gameplay and to hint at goals
+-The A hotkey now works with the final boss
+-Fixed shark being able to say things when dead at floor 149
+-Other small changes and fixes
+
+v1.0.2 (21/10/21)
+-The game is now easier lol
+-33% more XP from all enemies under floor 100
+-Red rune effect has been reduced to 75%, but now also affects XP gain
+-The lucky ring can now be found immediately at floor 49, instead of level 20
+
+v1.0.1 (20/10/21)
+-Final screen now displays your final time
+-Added a final tip when completing the game
+-"Percent to next level" text no longer displays if your level is over 1e9
+
+v1.0 (18/10/21)
+-This is the end of the Endless Stairwell eel arc!
+-150 new floors, with a new theme (351-500)
+-New honey: Golden honey
+-New final boss!
+-Blue key and lucky ring are now more common
+-Tip now specifically tells you what level you can get the blue key and lucky ring
+-Fixed the windows start button appearing over the game window
+-Tier 1 floors can now only go up to floor 40, so that the smithing area doesn't override a floor
+
+v0.11.1 (13/10/21)
+-Added a counter for time played
+
+v0.11 (13/10/21)
+-46 new floors, with a new theme copy-pasted from a previous area (305-350)
+-Shark makes his grand return!
+-Shark has gained a new ability: Heart failure
+-A new set of shark upgrades awaits
+-New voice lines at the floor 149 shark shop
+-More gem eels to brutally murder
+-SHARK NOW HAS A 1 IN 420 CHANCE OF CALLING YOU A [[Big Shark]] WHEN YOU BUY SOMETHING!!! As long as he's not dead.
+-Fixed bug where the 3rd dark orb reset wouldn't keep the 4th cocoa bar milestone green
+-Fixed bug where clicking the tip history button multiple times would duplicate the tips
+-Fixed various issues with upgrades when importing
+-Added a save to the save bank
+-Other small changes and fixes
+
+v0.10.1 (08/10/21)
+-Fixed game-breaking bug where the second-to-last combinator upgrade II killed XP gain
+
+v0.10 (08/10/21)
+-4 new floors, 3 of which contain new things (301-304)
+-Added monster blood, which increases XP gain
+-Added blood gems, which allow for the production of monster blood
+-Added a new boss monster, which can be beaten multiple times and drops blood gems
+-Added a series of monster blood-related upgrades
+-Windows icons now feature an Endless Stairwell icon
+-Numbers at the Jx level now actually use 0 decimal places (forgot to change it in v0.9)
+-Fixed "Go up a floor" button being disabled on load if above floor 250
+-Fixed a bug with the hyper gem icon not disappearing on import
+-Fixed a bug where combinator upgrades II wouldn't re-enable after dark orb reset
+-Fixed some font sizing issues
+-Added a save to the save bank
+-Other small changes and fixes
+
+v0.9 (06/10/21)
+-Added a new set of combinator upgrades at floor 299
+-Added a new dark orb, with even more boosts
+-numbers at the Jx level now use 0 decimal places
+-Combinator upgrade 8 reduced from 10,000 hyperplasm to 9,000
+-Added a save to the save bank
+
+v0.8.1 (05/10/21)
+-Moved back to ExpantaNum from OmegaNum, with a new number formatting tool that extends all the way to the end of ExpantaNum (hooray!)
+-Updated final tip to explain Jx
+
+v0.8 (03/10/21)
+-50 new floors, with a new theme
+-More combinator upgrades, one of which allows access to the new floors
+-Combinating star bars no longer uses up ingredients
+-Other small changes and fixes
+
+v0.7 (30/09/21)
+-50 new floors, with a new theme
+-Added the combinator, which allows for the combination of currencies into new ones
+-Added various combinator upgrades
+-Another dark orb is now available
+-Rune buffs have been increased to 45 seconds
+-Runes can now stack their times (up to 300 seconds)
+-Green rune's effect has been decreased from 50% to 40%
+-An earlier tip now hints at finding the smithing area, to get players to explore
+-Other small changes and fixes
+
+v0.6 (28/09/21)
+-Added runes, which give useful early game buffs to deepen the early experience
+-Added rune fragments, which can be found and crafted into runes in the smithing area
+-Increased the chance of finding items in a room
+-Drastically changed various item weights
+-Dying the first time no longer takes away XP, but instead gives you a warning message
+-Energy regenerates slightly faster
+-XP gain is slightly increased, with more for the first few levels
+-The P hotkey now works anywhere on the stairwell, instead of only at the altar
+-Leaving the battle no longer resets the "time since attack", so winning a bunch of battles really fast now takes away energy quickly
+-Honey/vanilla honey pickup text is now appropriately coloured
+-Enemies above floor 150 have been made slightly easier, so they're more likely to be beatable at F10 cocoa honey
+-Other small changes and fixes
+
+v0.5 (25/09/21)
+-Added floor -1, which contains dark orbs
+-Added new cocoa bar milestones that require dark orbs to reach
+-Energy now regenerates faster in the stairwell
+-XP gain is slightly higher, so early game is slightly faster
+-Cocoa bar count now only appears after you've bought the shark sapphire
+-Moved constants to their own JS file
+-Fixed being able to use the P hotkey anywhere
+-Fixed various issues when importing
+-Fixed sapphire icon being too small
+-Other small changes and fixes
+
+v0.4.1 (23/09/21)
+-Cocoa bar milestones now appear green when they are achieved
+-Fixed new images not loading
+-Fixed hotkeys not working above floor 150
+
+v0.4 (23/09/21)
+-50 new floors, with a new theme
+-Added cocoa bars, a new currency (not to be confused with chocolate bars, which they're not)
+-Added cocoa bar milestones
+-Changed monster health text to be more visible
+-Cocoa resets no longer require confirmation when resetting for over 100 cocoa honey
+-Other small changes and fixes
+-Real BIG numbere dis time
+
+v0.3.1 (22/09/21)
+-Hotkeys for various purposes, with a new window to list them
+-Various bugfixes (mostly hotkey-related, turns out v0.3 was very buggy)
+
+v0.3 (22/09/21)
+-50 new floors, with a new theme
+-A new set of enemies, now considerably stronger
+-Added the Shark shop, from which you can buy upgrades
+-Added honeyplasm, a new currency
+-Up/down arrow keys now go up/down a floor
+-Other small changes and fixes
+
+v0.2.2 (20/09/21)
+-Added hotkeys for honey and vanilla honey (1 and 2 respectively)
+
+v0.2.1 (20/09/21)
+-Added the tip history box, which shows you all the tips you've unlocked
+-Increased the informativeness of some tips
+-Vanilla honey no longer heals all health, but instead a portion of your energy
+-Vanilla honey also becomes less effective the deeper you go, to stop people from going out thousands of rooms again
+-Both vanilla honey and one-time items become more common the further out you go, to encourage further exploration
+-Other small changes and fixes
+
+
+v0.2 (19/09/21)
+-Added a series of fancy upgrades at the altar, which cost cocoa honey
+-Made the cocoa honey hardcap far higher to reflect the extra content
+-Dying now takes away considerably less of your XP, feel free to die as much as you want
+-Buffed XP gain a bit for early players
+-Vanilla honey now appears slightly more often instead of regular honey
+-The first 2 special items are slightly more common
+-% to next level no longer appears as NaN for large levels
+-Health and energy bar text is more readable
+-The Flying eel is slightly harder, thanks to all the people who joked about how hard it is
+
+v0.1.1 (18/09/21)
+-Corrected button text to look more appealing
+-Slightly decreased time required to reach the current end of content
+-Changed tooltip at level 10 to appear at level 8 instead
+-A certain late-game boost has been buffed
+
+v0.1 (18/09/21)
+-Added all the main stuff, up to a couple of cocoa honey resets
