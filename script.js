@@ -1344,13 +1344,13 @@ setInterval(monsterAttack, 100)
 
 //Winning the battle
 function battleWin() {
-  if (game.currentFloor <= 100) {xpToGet = game.monsterMaxHealth.div(11).pow(1.3).mul(cocoaBoost)}
+  if (game.currentFloor <= 100) {xpToGet = game.monsterMaxHealth.div(10).pow(1.3).mul(cocoaBoost)}
   else if (game.currentFloor <= 150) {xpToGet = game.monsterMaxHealth.log().pow(0.4).mul(cocoaBoost)}
   else if (game.currentFloor <= 200) {
     if (game.cocoaBars >= 15) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(500).mul(game.totalDifficulty.div(2).add(0.5)))}
     else if (game.cocoaBars >= 13) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(100).mul(game.totalDifficulty.div(2).add(0.5)))}
-    else if (game.cocoaBars >= 11) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(20).mul(game.totalDifficulty.div(2).add(0.5)))}
-    else {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(3).mul(game.totalDifficulty.div(2).add(0.5)))}
+    else if (game.cocoaBars >= 11) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(25).mul(game.totalDifficulty.div(2).add(0.5)))}
+    else {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(6).mul(game.totalDifficulty.div(2).add(0.5)))}
     if (game.darkOrbs >= 2) xpToGet = xpToGet.tetr(game.totalDifficulty.mul(15))
     if (game.cocoaBars >= 16) xpToGet = xpToGet.tetr(game.totalDifficulty.mul(20 ** (game.cocoaBars - 13)))
   }
@@ -2077,7 +2077,7 @@ function displayCBM(x) {
   else if (x==2) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>2 cocoa bars</span><br>Keep 10,000,000 XP on reset")}
   else if (x==3) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>4 cocoa bars</span><br>Cocoa bar effect is much stronger")}
   else if (x==4) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>5 cocoa bars</span><br>XP is set to cocoa boost amount on cocoa honey resets and cocoa bar resets")}
-  else if (x==5) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>9 cocoa bars</span><br>Multiply cocoa honey gain by 1.000F10")}
+  else if (x==5) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>9 cocoa bars</span><br>Multiply cocoa honey gain by 1.000F10<br>Try killing some weak tier 4 enemies to get to the 10th cocoa bar!")}
   else if (x==6) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>10 cocoa bars</span><br>Gain access to <b>floor -1</b>")}
   else if (x==7) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>11 cocoa bars</span><br>Enemies above floor 150 drop more XP (1/3)")}
   else if (x==8) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>13 cocoa bars</span><br>Enemies above floor 150 drop more XP (2/3)")}
@@ -2087,6 +2087,7 @@ function displayCBM(x) {
   else if (x==12) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>20 cocoa bars</span><br>Forge your shadow ring into a cobalt ring")}
   else if (x==13) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>26 cocoa bars</span><br>Tier 6 enemies drop slightly more XP")}
   else if (x==14) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>30 cocoa bars</span><br>Tier 6 enemies drop far more XP")}
+  
 }
 
 function hideCBM() {

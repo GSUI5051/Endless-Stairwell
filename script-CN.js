@@ -1344,13 +1344,13 @@ setInterval(monsterAttack, 100)
 
 //Winning the battle
 function battleWin() {
-  if (game.currentFloor <= 100) {xpToGet = game.monsterMaxHealth.div(11).pow(1.3).mul(cocoaBoost)}
+  if (game.currentFloor <= 100) {xpToGet = game.monsterMaxHealth.div(10).pow(1.3).mul(cocoaBoost)}
   else if (game.currentFloor <= 150) {xpToGet = game.monsterMaxHealth.log().pow(0.4).mul(cocoaBoost)}
   else if (game.currentFloor <= 200) {
     if (game.cocoaBars >= 15) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(500).mul(game.totalDifficulty.div(2).add(0.5)))}
     else if (game.cocoaBars >= 13) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(100).mul(game.totalDifficulty.div(2).add(0.5)))}
-    else if (game.cocoaBars >= 11) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(20).mul(game.totalDifficulty.div(2).add(0.5)))}
-    else {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(3).mul(game.totalDifficulty.div(2).add(0.5)))}
+    else if (game.cocoaBars >= 11) {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(25).mul(game.totalDifficulty.div(2).add(0.5)))}
+    else {xpToGet = game.monsterMaxHealth.tetr(ExpantaNum(6).mul(game.totalDifficulty.div(2).add(0.5)))}
     if (game.darkOrbs >= 2) xpToGet = xpToGet.tetr(game.totalDifficulty.mul(15))
     if (game.cocoaBars >= 16) xpToGet = xpToGet.tetr(game.totalDifficulty.mul(20 ** (game.cocoaBars - 13)))
   }
@@ -2077,7 +2077,7 @@ function displayCBM(x) {
   else if (x==2) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>2 可可砖块</span><br>重置时保留 10,000,000 经验")}
   else if (x==3) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>4 可可砖块</span><br>可可砖块的效果大幅提高")}
   else if (x==4) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>5 可可砖块</span><br>通过重置获得可可蜂蜜和可可砖块后，经验值等于可可砖块的加成倍数")}
-  else if (x==5) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>9 可可砖块</span><br>可可蜂蜜的获得量提高 1.000F10 倍")}
+  else if (x==5) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>9 可可砖块</span><br>可可蜂蜜的获得量提高 1.000F10 倍<br>试着杀一些层级 4 的怪物，然后你就能拿到 10 个可可砖块！")}
   else if (x==6) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>10 可可砖块</span><br>可以通往 <b>-1 层</b>")}
   else if (x==7) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>11 可可砖块</span><br>150 层以上的敌人掉落更多的经验 (1/3)")}
   else if (x==8) {$("#cocoaBarMilestoneText").html("<span style='font-size: 33px; line-height: 42px;'>13 可可砖块</span><br>150 层以上的敌人掉落更多的经验 (2/3)")}
