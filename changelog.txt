@@ -1,3 +1,6 @@
+v1.1.4 (30/10/21)
+-Added a funny little Discord icon to replace the old text
+
 v1.1.3 (28/10/21)
 -Early game enemies drop more XP (again)
 -The 9th cocoa bar text now tells you how to get the 10th cocoa bar
