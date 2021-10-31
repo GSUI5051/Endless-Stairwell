@@ -1,3 +1,6 @@
+v1.1.5 (31/10/21)
+-Fixed time played not updating while dialog box is not open (could affect speedruns)
+
 v1.1.4 (30/10/21)
 -Added a funny little Discord icon to replace the old text
 

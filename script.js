@@ -554,16 +554,20 @@ getTheTime()
 
 setInterval(getTheTime, 1000)
 
+lastTimePlayedUp = Date.now()
 function timePlayedUp() {
-  game.timePlayed++
-  timePlayedHours = Math.floor(game.timePlayed / 3600)
-  timePlayedMinutes = Math.floor(game.timePlayed / 60) % 60
-  timePlayedSeconds = game.timePlayed % 60
+  timePlayedDiff = (Date.now() - lastTimePlayedUp) / 1000
+  game.timePlayed += timePlayedDiff
+  timePlayedFloor = Math.floor(game.timePlayed)
+  timePlayedHours = Math.floor(timePlayedFloor / 3600)
+  timePlayedMinutes = Math.floor(timePlayedFloor / 60) % 60
+  timePlayedSeconds = timePlayedFloor % 60
   timeString = (timePlayedHours + ":" + ((timePlayedMinutes < 10 ? '0' : '') + timePlayedMinutes) + ":" + ((timePlayedSeconds < 10 ? '0' : '') + timePlayedSeconds))
   $("#timePlayed").html(timeString)
+  lastTimePlayedUp = Date.now()
 }
 
-setInterval(timePlayedUp, 1000)
+setInterval(timePlayedUp, 100)
 
 
 
@@ -921,10 +925,10 @@ function updateInfo() {
       document.getElementById("endingDiv").style.display = "block"
       if (game.currentTip == 20) game.currentTip = 21
       if (game.finalTime < 10) {
-        game.finalTime = game.timePlayed
-        timePlayedHours = Math.floor(game.timePlayed / 3600)
-        timePlayedMinutes = Math.floor(game.timePlayed / 60) % 60
-        timePlayedSeconds = game.timePlayed % 60
+        game.finalTime = Math.floor(game.timePlayed)
+        timePlayedHours = Math.floor(game.finalTime / 3600)
+        timePlayedMinutes = Math.floor(game.finalTime / 60) % 60
+        timePlayedSeconds = game.finalTime % 60
         timeString = (timePlayedHours + ":" + ((timePlayedMinutes < 10 ? '0' : '') + timePlayedMinutes) + ":" + ((timePlayedSeconds < 10 ? '0' : '') + timePlayedSeconds))
         $("#finalTime").html("Final time: " + timeString)
       }
